@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Build frontend if not already built
+# Frontend should be built during deploy (nixpacks build phase)
 if [ ! -d "frontend/dist" ]; then
-  echo "Building frontend..."
-  (cd frontend && npm install && npm run build)
+  echo "ERROR: frontend/dist not found. Ensure build phase runs npm install && npm run build."
+  exit 1
 fi
 
 # Start API (port 8000)
