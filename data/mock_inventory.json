@@ -1,0 +1,22 @@
+[
+  {
+    "vin": "5UXCR6C0XR9X12345",
+    "year": 2024,
+    "make": "BMW",
+    "model": "X5",
+    "trim": "xDrive40i",
+    "price": 69950,
+    "status": "available",
+    "color": "Alpine White"
+  },
+  {
+    "vin": "5UXCR6C0XR9X54321",
+    "year": 2024,
+    "make": "BMW",
+    "model": "X5",
+    "trim": "M60i",
+    "price": 92900,
+    "status": "in_transit",
+    "color": "Black Sapphire Metallic"
+  }
+]

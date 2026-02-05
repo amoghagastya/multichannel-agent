@@ -1,0 +1,29 @@
+{
+  "dealer_id": "demo_bmw",
+  "dealer_name": "Metro BMW",
+  "brand": "BMW",
+  "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg",
+  "timezone": "America/New_York",
+  "tone": "Friendly, efficient, and helpful. Keep responses short and upbeat.",
+  "qualifying_questions": {
+    "sales": [
+      "Are you looking to buy or lease?\\nWhat timeline are you considering?\\nDo you have a trade-in?\\nDo you have a budget range in mind?"
+    ],
+    "service": [
+      "Which service do you need?\\nWhat day and time works best?"
+    ]
+  },
+  "routing": {
+    "sales_queue": "sales-bdc",
+    "service_queue": "service-advisors",
+    "nurture_queue": "nurture"
+  },
+  "crm": {
+    "provider": "mock",
+    "lead_source": "AI Concierge"
+  },
+  "compliance": {
+    "require_sms_opt_in": true,
+    "require_voice_consent": true
+  }
+}

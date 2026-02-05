@@ -1,0 +1,20 @@
+.env
+.venv/
+__pycache__/
+.codex/
+.DS_Store
+
+# Logs and runtime data
+/data/voice_logs.jsonl
+/data/mock_crm.jsonl
+/data/*.jsonl
+
+# Python bytecode
+*.pyc
+
+# Node
+/frontend/node_modules/
+/frontend/dist/
+
+# Streamlit
+.streamlit/

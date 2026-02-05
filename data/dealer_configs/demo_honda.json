@@ -1,0 +1,32 @@
+{
+  "dealer_id": "demo_honda",
+  "dealer_name": "Sunset Honda",
+  "brand": "Honda",
+  "logo_url": "https://cdn.wallpapersafari.com/9/98/whERJ3.jpg",
+  "timezone": "America/Los_Angeles",
+  "tone": "Friendly, efficient, and helpful. Keep responses short and upbeat.",
+  "qualifying_questions": {
+    "sales": [
+      "Are you looking to buy or lease?",
+      "What’s your timeline?",
+      "Do you have a trade-in?"
+    ],
+    "service": [
+      "What service do you need?",
+      "What day/time works best?"
+    ]
+  },
+  "routing": {
+    "sales_queue": "sales-team-west",
+    "service_queue": "service-team-west",
+    "nurture_queue": "nurture"
+  },
+  "crm": {
+    "provider": "mock",
+    "lead_source": "AI Concierge"
+  },
+  "compliance": {
+    "require_sms_opt_in": true,
+    "require_voice_consent": true
+  }
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+        background: #0b0f14;
+        color: #eef2f7;
+      }
+      .card {
+        max-width: 680px;
+        margin: 48px auto;
+        background: #141a22;
+        border: 1px solid #1f2633;
+        border-radius: 14px;
+        padding: 24px;
+        box-shadow: 0 18px 30px rgba(0,0,0,0.3);
+      }
+      .row { display: flex; gap: 12px; align-items: center; }
+      .btn {
+        padding: 10px 16px;
+        border-radius: 10px;
+        border: 1px solid #2a3344;
+        background: #141a22;
+        color: #e6e8ee;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn.primary { background: #00e2a1; color: #03140c; border: none; }
+      .status { color: #9aa3b2; font-size: 0.95rem; margin-top: 12px; }
+      .log {
+        background: #0f141b;
+        border: 1px solid #1f2633;
+        border-radius: 10px;
+        padding: 10px;
+        margin-top: 12px;
+        font-size: 0.85rem;
+        max-height: 160px;
+        overflow: auto;
+      }
+      .tag { display: inline-block; background: #0e2020; color: #3fe2b3; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <!-- <h2>DealSmart AI — WebRTC Call</h2> -->
+      <div class="tag">Browser Voice</div>
+      <p>Call the AI agent using your browser mic (no phone required).</p>
+      <div class="row">
+        <button class="btn primary" id="callBtn">Call Agent</button>
+        <button class="btn" id="hangupBtn" disabled>Hang Up</button>
+      </div>
+      <div class="status" id="status">Ready</div>
+      <div class="log" id="log"></div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
