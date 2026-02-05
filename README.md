@@ -6,6 +6,39 @@ A multi-channel qualification MVP with:
 - Voice inbound agent (Ultravox + Twilio)
 - Shared tools + dealer config
 
+## Architecture (At a Glance)
+- Channel adapters: SMS + Voice (WebRTC + Twilio inbound)
+- Shared tools: inventory, CRM create/update, routing
+- Dealer config: tone, questions, routing, compliance
+- Observability: voice logs + summaries + tool call audit
+
+```mermaid
+flowchart LR
+  %% Multi-channel inputs
+  SMS[SMS Customer] --> SMSTwilio[Twilio SMS]
+  VoicePSTN[Voice Call] --> VoiceTwilio[Twilio Voice Inbound]
+  WebRTC[WebRTC Dialer] --> TwiML[TwiML App]
+
+  %% Channel adapters
+  SMSTwilio --> SMSAgent[SMS Agent<br/>OpenAI Agents SDK]
+  VoiceTwilio --> API[/FastAPI /incoming/]
+  TwiML --> API
+
+  %% Voice agent
+  API --> Ultravox[Ultravox Voice Agent]
+
+  %% Shared tools
+  Ultravox --> Tools[Tool Layer]
+  SMSAgent --> Tools
+  Tools --> Inventory[(Inventory Service)]
+  Tools --> CRM[(CRM Adapter)]
+  Tools --> Routing[(Routing Rules)]
+
+  %% Data + logs
+  SMSAgent --> Logs[(Audit + Logs)]
+  Ultravox --> Logs
+```
+
 ## Setup
 1. Install dependencies:
    ```bash
@@ -52,6 +85,10 @@ A multi-channel qualification MVP with:
 4. Add `TWILIO_API_KEY_SID` + `TWILIO_API_KEY_SECRET` in `.env`.
 5. Build the frontend (`npm run build`).
 6. Open `https://<your-api-host>/webrtc/` to use the dialer.
+
+## Observability
+- Voice logs: `data/voice_logs.jsonl`
+- Mock CRM: `data/mock_crm.jsonl`
 ## Dealer Config
 See `data/dealer_configs/demo_bmw.json`. Add more dealership configs to scale.
 
