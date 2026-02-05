@@ -1,0 +1,6 @@
+[build]
+builder = "nixpacks"
+buildCommand = "pip install -r requirements.txt && cd frontend && npm install && npm run build"
+
+[start]
+startCommand = "bash deploy/start.sh"
