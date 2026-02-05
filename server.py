@@ -39,6 +39,7 @@ ULTRAVOX_API_KEY = os.getenv("ULTRAVOX_API_KEY", "")
 ULTRAVOX_BASE_URL = os.getenv("ULTRAVOX_BASE_URL", "https://api.ultravox.ai/api")
 DEFAULT_DEALER_ID = os.getenv("DEFAULT_DEALER_ID", "demo_bmw")
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "").rstrip("/")
+API_BASE_PATH = os.getenv("API_BASE_PATH", "")
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "")
 TWILIO_FROM_NUMBER = os.getenv("TWILIO_FROM_NUMBER", "")
@@ -119,9 +120,10 @@ async def twiml(request: Request):
     }
     if PUBLIC_BASE_URL:
         payload["selectedTools"] = build_temporary_tools(PUBLIC_BASE_URL)
+        base = f"{PUBLIC_BASE_URL}{API_BASE_PATH}"
         payload["callbacks"] = {
-            "joined": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
-            "ended": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
+            "joined": {"url": f"{base}/ultravox/webhook"},
+            "ended": {"url": f"{base}/ultravox/webhook"},
         }
 
     try:
@@ -362,9 +364,10 @@ async def incoming(request: Request):
     }
     if PUBLIC_BASE_URL:
         payload["selectedTools"] = build_temporary_tools(PUBLIC_BASE_URL)
+        base = f"{PUBLIC_BASE_URL}{API_BASE_PATH}"
         payload["callbacks"] = {
-            "joined": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
-            "ended": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
+            "joined": {"url": f"{base}/ultravox/webhook"},
+            "ended": {"url": f"{base}/ultravox/webhook"},
         }
 
     # Note: Adjust endpoint/payload per Ultravox inbound quickstart if needed.
@@ -439,9 +442,10 @@ async def outbound(request: Request):
     }
     if PUBLIC_BASE_URL:
         payload["selectedTools"] = build_temporary_tools(PUBLIC_BASE_URL)
+        base = f"{PUBLIC_BASE_URL}{API_BASE_PATH}"
         payload["callbacks"] = {
-            "joined": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
-            "ended": {"url": f"{PUBLIC_BASE_URL}/ultravox/webhook"},
+            "joined": {"url": f"{base}/ultravox/webhook"},
+            "ended": {"url": f"{base}/ultravox/webhook"},
         }
 
     resp = requests.post(

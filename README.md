@@ -56,8 +56,9 @@ flowchart LR
    ULTRAVOX_API_KEY=...
    ULTRAVOX_BASE_URL=https://api.ultravox.ai/api
    DEFAULT_DEALER_ID=demo_bmw
-   PUBLIC_BASE_URL=https://<your-api-host>
-   PUBLIC_API_URL=https://<your-api-host>
+   PUBLIC_BASE_URL=https://<your-service-host>
+   PUBLIC_API_URL=https://<your-service-host>/api
+   API_BASE_PATH=/api
    TWILIO_ACCOUNT_SID=...
    TWILIO_AUTH_TOKEN=...
    TWILIO_FROM_NUMBER=+1XXXXXXXXXX
@@ -74,17 +75,40 @@ flowchart LR
    streamlit run app.py
    ```
 
+## Single-Service Deploy (Railway)
+This repo supports a **single Railway service** that runs:
+- FastAPI (webhooks + WebRTC + tools)
+- Streamlit UI
+- Nginx reverse proxy
+
+Set the Railway start command to:
+```bash
+bash deploy/start.sh
+```
+
+The service will expose:
+- UI: `/`
+- API: `/api/*`
+- WebRTC dialer: `/webrtc/`
+
+Required env vars:
+```
+PUBLIC_BASE_URL=https://<your-service-host>
+PUBLIC_API_URL=https://<your-service-host>/api
+API_BASE_PATH=/api
+```
+
 ## Twilio + Ultravox (Inbound)
-- Point your Twilio Voice webhook to `https://<your-ngrok>/incoming` (POST).
+- Point your Twilio Voice webhook to `https://<your-service-host>/api/incoming` (POST).
 - The server creates an Ultravox call and returns TwiML to stream audio.
 
 ## In-App WebRTC (Twilio Client)
 1. Create a TwiML App in Twilio Console.
-2. Set its **Voice URL** to `https://<your-ngrok>/twiml` (POST).
+2. Set its **Voice URL** to `https://<your-service-host>/api/twiml` (POST).
 3. Put the App SID in `TWILIO_APP_SID`.
 4. Add `TWILIO_API_KEY_SID` + `TWILIO_API_KEY_SECRET` in `.env`.
 5. Build the frontend (`npm run build`).
-6. Open `https://<your-api-host>/webrtc/` to use the dialer.
+6. Open `https://<your-service-host>/webrtc/` to use the dialer.
 
 ## Observability
 - Voice logs: `data/voice_logs.jsonl`
