@@ -2,7 +2,7 @@ providers = ["python", "node"]
 
 [phases.setup]
 # Install system packages for single-service deployment
-nixPkgs = ["pkgs.python311", "pkgs.nodejs-20_x", "nginx"]
+nixPkgs = ["pkgs.python311", "pkgs.nodejs-18_x", "nginx"]
 
 [phases.build]
 cmds = [
