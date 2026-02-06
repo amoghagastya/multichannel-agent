@@ -247,16 +247,16 @@ with voice_tab:
             call_submit = st.form_submit_button("Call Me")
         if call_submit and to_number:
             try:
-            resp = requests.post(
-                f"{API_BASE_URL}/outbound",
-                json={"to": to_number, "dealer_id": dealer_id},
-                timeout=10,
-            )
+                resp = requests.post(
+                    f"{API_BASE_URL}/outbound",
+                    json={"to": to_number, "dealer_id": dealer_id},
+                    timeout=10,
+                )
                 if resp.status_code >= 400:
-                    st.error(f"Call failed: {resp.text}")
+                        st.error(f"Call failed: {resp.text}")
                 else:
-                    data = resp.json()
-                    st.success(f"Calling {to_number} (Call SID: {data.get('twilio_call_sid')})")
+                        data = resp.json()
+                        st.success(f"Calling {to_number} (Call SID: {data.get('twilio_call_sid')})")
             except requests.RequestException as exc:
                 st.error(f"Could not reach FastAPI server on :8000 ({exc})")
 

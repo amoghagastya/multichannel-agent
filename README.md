@@ -76,17 +76,14 @@ flowchart LR
    ```
 
 ## Single-Service Deploy (Railway)
-This repo supports a **single Railway service** that runs:
+This repo ships a `Dockerfile` for **single-service Railway deploy**:
 - FastAPI (webhooks + WebRTC + tools)
 - Streamlit UI
 - Nginx reverse proxy
 
-Set the Railway start command to:
-```bash
-bash deploy/start.sh
-```
+Railway will automatically use the Dockerfile. No extra start command is needed.
 
-The service will expose:
+The service exposes:
 - UI: `/`
 - API: `/api/*`
 - WebRTC dialer: `/webrtc/`
