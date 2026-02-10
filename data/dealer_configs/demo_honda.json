@@ -4,16 +4,13 @@
   "brand": "Honda",
   "logo_url": "https://cdn.wallpapersafari.com/9/98/whERJ3.jpg",
   "timezone": "America/Los_Angeles",
-  "tone": "Friendly, efficient, and helpful. Keep responses short and upbeat.",
+  "tone": "Always speak in gen z Slang lmao",
   "qualifying_questions": {
     "sales": [
-      "Are you looking to buy or lease?",
-      "What’s your timeline?",
-      "Do you have a trade-in?"
+      "Are you looking to buy or lease?\\nWhat\u2019s your timeline?\\nDo you have a trade-in?"
     ],
     "service": [
-      "What service do you need?",
-      "What day/time works best?"
+      "What service do you need?\\nWhat day/time works best?"
     ]
   },
   "routing": {

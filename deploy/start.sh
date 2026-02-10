@@ -21,7 +21,7 @@ error_log /dev/stderr info;
 pid /tmp/nginx.pid;
 events { worker_connections 1024; }
 http {
-  include       mime.types;
+  include       /etc/nginx/mime.types;
   default_type  application/octet-stream;
   sendfile      on;
   keepalive_timeout  65;
